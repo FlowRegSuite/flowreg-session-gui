@@ -24,26 +24,32 @@ Qt (PySide6) desktop application to configure and run PyFlowReg session mode loc
 - Python `3.10+` (examples below use `3.11`)
 - System `ssh` and `rsync` available in `PATH`
 - For remote Slurm submission: working SSH alias (default `deigo`)
+- If you use `conda` instead of `mamba`, the commands are the same (`mamba` -> `conda`)
 
 ### 1) Create and activate environment
 
 ```bash
-mamba create -n flowreg_gui python=3.11 pip -y
+mamba create -n flowreg_gui python=3.11 -y
 mamba activate flowreg_gui
 ```
 
-If `mamba activate` is not available in your current shell, activate via conda:
+### 2) Install from PyPI (recommended)
 
 ```bash
-conda activate flowreg_gui
+python -m pip install pyflowreg-session-gui
 ```
 
-### 2) Install the GUI
-
-From the repository root:
+### 3) Verify installation
 
 ```bash
-python -m pip install -U pip
+python -c "import pyflowreg_session_gui; print(pyflowreg_session_gui.__version__)"
+```
+
+### Alternative: Editable install from source
+
+```bash
+git clone https://github.com/FlowRegSuite/pyflowreg-session-gui.git
+cd pyflowreg-session-gui
 python -m pip install -e .
 ```
 
@@ -51,12 +57,6 @@ For development tools (`ruff`, `pytest`):
 
 ```bash
 python -m pip install -e .[dev]
-```
-
-### 3) Verify installation
-
-```bash
-python -c "import pyflowreg_session_gui; print(pyflowreg_session_gui.__version__)"
 ```
 
 ## Start The GUI
